@@ -33,31 +33,45 @@ using namespace TencentCloud::Cvm::V20170312;
 using namespace TencentCloud::Cvm::V20170312::Model;
 using namespace std;
 
+static std::string GetEnv(const std::string &env)
+{
+    char* value = getenv(env.c_str());
+    if (value == nullptr) {
+        return "";
+    }
+    return std::string(value);
+}
+
 int main()
 {
     TencentCloud::InitAPI();
 
     // use the sdk
 
-    string secretId = "<your secret id>";
-    string secretKey = "<your secret key>";
+   // string secretId = "<your secret id>";
+    //string secretKey = "<your secret key>";
+    string secretId = GetEnv("ENV_SecretId");
+    string secretKey = GetEnv("ENV_SecretKey");
     Credential cred = Credential(secretId, secretKey);
 
     HttpProfile httpProfile = HttpProfile();
-    httpProfile.SetEndpoint("cvm.ap-guangzhou.tencentcloudapi.com");
+    httpProfile.SetEndpoint("cvm.api3.yfm4-v6-iaas.tcecloud.fsphere.cn");
     httpProfile.SetReqTimeout(5);
+    httpProfile.SetProtocol(HttpProfile::Scheme::HTTP);
 
     ClientProfile clientProfile = ClientProfile(httpProfile);
 
     DescribeInstancesRequest req = DescribeInstancesRequest();
+    /*
     Filter respFilter;
     respFilter.SetName("zone");
     respFilter.SetValues({ "ap-guangzhou-1", "ap-guangzhou-2" });
     req.SetFilters({ respFilter });
     req.SetOffset(0);
     req.SetLimit(5);
+    */
 
-    CvmClient cvm_client = CvmClient(cred, "ap-guangzhou", clientProfile);
+    CvmClient cvm_client = CvmClient(cred, "chongqing", clientProfile);
 
     // set proxy
     // NetworkProxy proxy = NetworkProxy(NetworkProxy::Type::HTTP, "localhost.proxy.com", 8080);
