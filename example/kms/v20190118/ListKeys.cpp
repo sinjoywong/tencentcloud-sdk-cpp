@@ -76,7 +76,7 @@ int main()
     uint64_t key_num = rsp.GetTotalCount();
     cout << "key_num = " << key_num << endl;
     for (int i = 0; i < key_num; i++){
-        keyid = key_list[i].GetKeyId();
+        std::string keyid = key_list[i].GetKeyId();
         cout << "Get KMS CMK keyid=" << keyid << endl;
     }
     return 0;

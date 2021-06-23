@@ -28,7 +28,7 @@
 
 using namespace TencentCloud;
 using namespace TencentCloud::Kms::V20190118;
-using namespace TencentCloud::Kms::V20190118::Model
+using namespace TencentCloud::Kms::V20190118::Model;
 using namespace std;
 
 static std::string GetEnv(const std::string &env)
@@ -60,6 +60,8 @@ int main()
     ClientProfile clientProfile = ClientProfile(httpProfile);
 
     CreateKeyRequest req = CreateKeyRequest();
+    req.SetAlias("KMS-CSP");
+    req.SetDescription("product cmk for csp");
 
     KmsClient kms_client = KmsClient(cred, "chongqing", clientProfile);
 
@@ -73,7 +75,6 @@ int main()
     CreateKeyResponse rsp = outcome.GetResult();
     cout<<"RequestId="<<rsp.GetRequestId()<<endl;
     cout<<"keyId="<<rsp.GetKeyId()<<endl;
-    cout<<"TotalCount="<<rsp.GetTotalCount()<< endl;
     cout << "GetAlias" << rsp.GetAlias() << endl;
     cout << "KeyIdHasBeenSet=" << rsp.KeyIdHasBeenSet() << endl;
 
