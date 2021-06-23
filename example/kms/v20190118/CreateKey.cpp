@@ -27,8 +27,8 @@
 #include <string>
 
 using namespace TencentCloud;
-using namespace TencentCloud::Cvm::V20170312;
-using namespace TencentCloud::Cvm::V20170312::Model;
+using namespace TencentCloud::Kms::V20190118;
+using namespace TencentCloud::Kms::V20190118::Model
 using namespace std;
 
 static std::string GetEnv(const std::string &env)
