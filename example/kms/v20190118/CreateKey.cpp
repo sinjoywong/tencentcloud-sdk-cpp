@@ -51,7 +51,8 @@ static int assumeRole(Credentials &kms_cred){
   string secretKey = GetEnv("ENV_SecretKey");
   std::string uin = "100004603072";
   std::string default_sts_role = "CSP_KmsRole";
-  std::string rolename = "qcs::cam::uin/"+ uin + ":roleName/" + default_sts_role;
+    //std::string rolename = "qcs::cam::uin/"+ uin + ":roleName/" + default_sts_role;
+  std::string rolename = "qcs::cam::uin/"+ uin + ":role/tencentcloudServiceRoleName/" + default_sts_role;
   std::string default_sts_endpoint = "sts.api3.yfm4-v6-iaas.tcecloud.fsphere.cn";
   std::string default_sts_session = "csp_sts_session";
   std::string default_kms_region = "chongqing";
